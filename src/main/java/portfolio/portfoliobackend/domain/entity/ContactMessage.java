@@ -1,17 +1,19 @@
 package portfolio.portfoliobackend.domain.entity;
 
-import com.sun.istack.NotNull;
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import java.util.Date;
 
 @Entity(name = "CONTACT_MESSAGE")
 public class ContactMessage {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Contact_Me_Seq")
+    @SequenceGenerator(name = "Contact_Me_Seq", sequenceName = "CONTACT_SEQ", allocationSize = 1)
     @Column(name = "ID_MESSAGE")
     private Long id;
 
@@ -29,6 +31,10 @@ public class ContactMessage {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
