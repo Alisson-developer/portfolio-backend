@@ -8,6 +8,8 @@ import portfolio.portfoliobackend.exception.ValidationEntityDataException;
 import portfolio.portfoliobackend.repository.IContactMessageData;
 import portfolio.portfoliobackend.usecase.IContactMessageService;
 
+import java.util.Date;
+
 @Service
 public class ContactMessageService implements IContactMessageService {
 
@@ -17,6 +19,7 @@ public class ContactMessageService implements IContactMessageService {
     @Override
     public void storeContactMessage(ContactMessage contactMessage) throws ValidationEntityDataException {
         ValidateContactMessage.validateData(contactMessage);
+        contactMessage.setDate(new Date());
         contactMessageData.save(contactMessage);
     }
 }
