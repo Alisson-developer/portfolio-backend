@@ -10,9 +10,6 @@ public class ValidateContactMessage {
     private static String errorMessage;
 
     public static void validateData(ContactMessage contactMessage) throws ValidationEntityDataException {
-        if(contactMessage.getId() == null) {
-            throw new ValidationEntityDataException(errorMessage);
-        }
         if(contactMessage.getName() == null) {
             throw new ValidationEntityDataException(errorMessage);
         }
@@ -20,9 +17,6 @@ public class ValidateContactMessage {
             throw new ValidationEntityDataException(errorMessage);
         }
         if(contactMessage.getMessage() == null) {
-            throw new ValidationEntityDataException(errorMessage);
-        }
-        if(contactMessage.getDate() == null) {
             throw new ValidationEntityDataException(errorMessage);
         }
     }
